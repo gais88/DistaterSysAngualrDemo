@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-donor-dialgo',
@@ -11,7 +14,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DonorDialgoComponent implements OnInit {
   constructor(private fb: FormBuilder
     ,private api:ApiService
-    ,private dialogRef:MatDialogRef<DonorDialgoComponent> ) { }
+    ,private dialogRef:MatDialogRef<DonorDialgoComponent>,private toastr: ToastrService ) { }
 
   donorForm !: FormGroup
   ngOnInit(): void {
@@ -31,15 +34,23 @@ export class DonorDialgoComponent implements OnInit {
   addDonor(){
 
     if (this.donorForm.valid){
-      alert("dsds");
+
       this.api.PostDonor(this.donorForm.value).subscribe({
         next:(res) =>{
            this.donorForm.reset();
            this.dialogRef.close("save");
+           this.toastr.success('Success', 'Items Is saved');
+
 
         },
         error:(err) =>{
-          alert(err.error)
+          
+          swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Erros!" + err.error,
+
+          });
         }
       })
     }

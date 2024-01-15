@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from '../donor/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestDialgoComponent } from './request-dialgo/request-dialgo.component';
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-individual-request',
@@ -40,7 +41,12 @@ export class IndividualRequestComponent implements OnInit {
         this.dataSource.sort = this.sort;
       },
       error:(err) =>{
-        alert(err.error)
+        swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Erros!" + err.error,
+
+        });
       }
     })
 

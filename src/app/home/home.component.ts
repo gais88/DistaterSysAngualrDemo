@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../donor/services/api.service';
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,14 @@ export class HomeComponent implements OnInit {
     this.api.getInventoryCountByType(type).subscribe({
       next:(res)=>{
         this.bankTotal = res
+      },
+      error : (err)=>{
+        swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Erros!" + err.error,
+
+        });
       }
     })
   }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/donor/services/api.service';
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-aid-dialgo',
@@ -12,7 +14,7 @@ export class AidDialgoComponent implements OnInit {
 
   constructor(private fb: FormBuilder
     ,private api:ApiService
-    ,private dialogRef:MatDialogRef<AidDialgoComponent>) { }
+    ,private dialogRef:MatDialogRef<AidDialgoComponent>,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.createAidForm()
@@ -43,10 +45,16 @@ export class AidDialgoComponent implements OnInit {
         next:(res) =>{
            this.aidForm.reset();
            this.dialogRef.close("save");
+           this.toastr.success('Success', 'Items Is saved');
 
         },
         error:(err) =>{
-          alert(err.error)
+          swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Erros!" + err.error,
+
+          });
         }
       })
     }

@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/donor/services/api.service';
 import { DetailsDialgComponent } from './details-dialg/details-dialg.component';
+import swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-individual-request-details',
@@ -47,7 +49,12 @@ dataSource!: MatTableDataSource<any>;
 
       },
       error:(err) =>{
-        alert(err.error)
+        swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Erros!" + err.error,
+
+        });
       }
     })
   }

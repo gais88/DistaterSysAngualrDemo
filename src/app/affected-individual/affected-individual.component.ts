@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AffectedDialgoComponent } from './affected-dialgo/affected-dialgo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from '../donor/services/api.service';
+import swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-affected-individual',
@@ -41,7 +43,12 @@ getAffectedIndividuals(){
       this.dataSource.sort = this.sort;
     },
     error:(err) =>{
-      alert(err.error)
+      swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Erros!" + err.error,
+
+      });
     }
   })
 }

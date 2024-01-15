@@ -4,6 +4,10 @@ import { ApiService } from 'src/app/donor/services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
+import swal from 'sweetalert2'
+
+
+
 
 
 
@@ -74,8 +78,13 @@ isCompleted:boolean = true;
         this.createStepsForm()
 
     },
-    error : (error)=>{
+    error : (err)=>{
+      swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Erros!" + err.error,
 
+      });
     }
   })
 }
@@ -113,7 +122,15 @@ this.api.putDisbursesAidState(data).subscribe({
     console.log("after edit " +this.stepper.selectedIndex)
   },
   error : (error)=>{
-    alert(error.error)
+    //alert(error.error)
+    swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Erros!" + error.error,
+
+    });
+
+
   console.log(error.error);
   let currentIndex = this.stepper.selectedIndex
   this.stepper.selectedIndex = currentIndex;

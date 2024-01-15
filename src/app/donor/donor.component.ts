@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { ApiService } from './services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DonorDialgoComponent } from './donor-dialgo/donor-dialgo.component';
+import swal from 'sweetalert2'
 
 
 
@@ -35,12 +36,17 @@ export class DonorComponent implements OnInit {
         this.dataSource.sort = this.sort;
       },
       error:(err) =>{
-        alert ("Error from Api ");
+        swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Erros!" + err.error,
+
+        });
       }
     })
   }
 
-  
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -52,10 +58,10 @@ export class DonorComponent implements OnInit {
   }
 
   openDialog() {
-    
+
     const dialogRef = this.dialog.open(DonorDialgoComponent,{
       width: '30%',
-     
+
     });
 
     dialogRef.afterClosed().subscribe(result => {

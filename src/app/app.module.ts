@@ -19,6 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { IndividualRequestDetailsComponent } from './individual-request/individual-request-details/individual-request-details.component';
 import { DetailsDialgComponent } from './individual-request/individual-request-details/details-dialg/details-dialg.component';
 import { IndividualRequestDisbursesstepsComponent } from './individual-request/individual-request-disbursessteps/individual-request-disbursessteps.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { IndividualRequestDisbursesstepsComponent } from './individual-request/i
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    
+    ToastrModule.forRoot()
+
     ],
   providers: [],
   bootstrap: [AppComponent]

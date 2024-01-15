@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AidDialgoComponent } from './aid-dialgo/aid-dialgo.component';
 import { ApiService } from '../donor/services/api.service';
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-aid',
@@ -41,7 +42,12 @@ export class AidComponent implements OnInit {
         this.dataSource.sort = this.sort;
       },
       error:(err) =>{
-        alert(err.error)
+        swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Erros!" + err.error,
+
+        });
       }
     })
   }
