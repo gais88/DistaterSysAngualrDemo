@@ -1,0 +1,65 @@
+<mat-stepper labelPosition="bottom" #stepper labl>
+  <mat-step [stepControl]="stepsFrom" selected  >
+    <form [formGroup]="stepsFrom">
+      <ng-template matStepLabel>Idle</ng-template>
+
+      <mat-form-field>
+
+        <textarea formControlName="desc" matInput placeholder=""></textarea>
+      </mat-form-field>
+      <mat-label>Idle</mat-label>
+
+      <div>
+        <button mat-button matStepperNext (click)="nexStep()" type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="stepsFrom" >
+    <form [formGroup]="stepsFrom">
+      <ng-template matStepLabel>Prepare</ng-template>
+      <mat-form-field>
+        <mat-label>add your notes  to descriptions</mat-label>
+        <textarea formControlName="desc" matInput placeholder=""></textarea>
+      </mat-form-field>
+      <mat-label>Prepare</mat-label>
+      <div>
+        <button mat-button matStepperNext (click)="nexStep()" type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="stepsFrom"  >
+    <form [formGroup]="stepsFrom">
+      <mat-label>Disburses</mat-label>
+      <mat-form-field>
+        <mat-label>add your notes  to descriptions</mat-label>
+        <textarea formControlName="desc" matInput placeholder=""></textarea>
+      </mat-form-field>
+      <ng-template matStepLabel>Disburses</ng-template>
+      <div>
+        <button mat-button matStepperNext (click)="nexStep()"  type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="stepsFrom"  >
+    <form [formGroup]="stepsFrom">
+      <mat-label>Delivered</mat-label>
+      <mat-form-field>
+        <mat-label>add your notes  to descriptions</mat-label>
+        <textarea formControlName="desc" matInput placeholder=""></textarea>
+      </mat-form-field>
+      <ng-template matStepLabel>Delivered</ng-template>
+      <div>
+        <button mat-button matStepperNext (click)="nexStep()"  type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step>
+    <ng-template matStepLabel>complete</ng-template>
+    <mat-label>complete</mat-label>
+    <div>
+
+    </div>
+  </mat-step>
+</mat-stepper>

@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Add Affected Individual </h1>
+<mat-dialog-content>
+  <form [formGroup]="AffectedForm">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Full Name</mat-label>
+      <input formControlName="fullName" matInput placeholder="Placeholder">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+   
+   
+    
+    <mat-form-field class="example-full-width">
+      <mat-label>Telephone</mat-label>
+      <span matPrefix>+1 &nbsp;</span>
+      <input type="tel" matInput placeholder="555-555-1234" formControlName="phone">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Age</mat-label>
+      <input formControlName="age" matInput placeholder="Placeholder">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+    <mat-label>Address</mat-label>
+    <textarea formControlName="address" matInput placeholder="Ex. 100 Main St"></textarea>
+  </mat-form-field>
+  </form>
+
+
+
+
+</mat-dialog-content>
+<div>
+  <mat-dialog-actions >
+    <button mat-raised-button color="accent" matDialogClose>close </button>
+    <button mat-raised-button color="primary" (click)="addAffected()" >save</button>
+ </mat-dialog-actions>
+</div>

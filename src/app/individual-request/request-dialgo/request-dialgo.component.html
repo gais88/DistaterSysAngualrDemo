@@ -1,0 +1,43 @@
+
+<h1 mat-dialog-title>Add Request</h1>
+<mat-dialog-content>
+  <form [formGroup]="requestForm">
+
+    <mat-label>Enter  desc </mat-label>
+  <mat-form-field class="example-full-width">
+    <mat-label>Desc</mat-label>
+    <textarea formControlName="desc" matInput placeholder=""></textarea>
+  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select AffectedIndividuals</mat-label>
+      <mat-select formControlName="affectedIndividualId">
+        <mat-option value="one" *ngFor="let individual of AffectedIndividuals" [value]="individual.id">
+        {{individual.fullName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <label id="example-radio-group-label">priority</label>
+    <mat-radio-group formControlName="priority"
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group">
+  
+        <mat-radio-button class="example-radio-button" *ngFor="let priority of priorities" [value]="priority">{{priority}}</mat-radio-button>
+  
+    </mat-radio-group>
+  
+
+    
+
+  
+  </form>
+
+
+
+
+</mat-dialog-content>
+<div>
+  <mat-dialog-actions >
+    <button mat-raised-button color="accent" matDialogClose>close </button>
+    <button mat-raised-button color="primary" (click)="addRequest()" >save</button>
+ </mat-dialog-actions>
+</div>
